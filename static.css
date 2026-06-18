@@ -102,8 +102,7 @@ select {
 
 .nav,
 .hero-inner,
-.page-section > *,
-.footer {
+.page-section > * {
   max-width: 1160px;
   margin-inline: auto;
 }
@@ -649,11 +648,12 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .apply-card {
   padding: 22px;
+  height: 100%;
 }
 
 .apply-card h3 {
@@ -768,6 +768,14 @@ h2 {
 .referral-section .section-head p,
 .compliance-note {
   color: #dce9ed;
+}
+
+.referral-section p {
+  color: #dce9ed;
+}
+
+.ambassador-page #start {
+  background: #f1f6f8;
 }
 
 .reward-detail-section {
@@ -980,6 +988,8 @@ body.modal-open {
 }
 
 .footer {
+  width: 100%;
+  max-width: none;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
   gap: 20px;
@@ -988,6 +998,10 @@ body.modal-open {
   color: var(--muted);
   background: #fff;
   align-items: end;
+}
+
+.footer p {
+  text-align: left;
 }
 
 .footer strong {
