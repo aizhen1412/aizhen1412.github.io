@@ -35,12 +35,6 @@ button {
   font: inherit;
 }
 
-input,
-textarea,
-select {
-  font: inherit;
-}
-
 .hero {
   position: relative;
   min-height: 640px;
@@ -297,12 +291,6 @@ h1 {
   line-height: 1.74;
   text-align: justify;
   text-justify: inter-ideograph;
-}
-
-.form-hint {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .card-head {
@@ -824,60 +812,6 @@ h2 {
   color: #3a4650;
 }
 
-.referral-link-box {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 22px;
-  margin-top: 26px;
-  padding: 22px;
-  border: 1px solid #cddbe2;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.referral-link-box h3 {
-  margin-top: 6px;
-  font-size: 22px;
-}
-
-.referral-link-box p:not(.eyebrow) {
-  margin-top: 10px;
-  color: var(--muted);
-  line-height: 1.75;
-}
-
-.referral-link-form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.wide {
-  grid-column: 1 / -1;
-}
-
-label {
-  display: grid;
-  gap: 8px;
-  color: #344054;
-  font-weight: 800;
-}
-
-input {
-  width: 100%;
-  border: 1px solid #cfd8e2;
-  border-radius: 7px;
-  padding: 11px 12px;
-  color: var(--ink);
-  background: #fff;
-  outline: none;
-}
-
-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(23, 107, 135, 0.14);
-}
-
 .standalone-note {
   max-width: 1160px;
   margin-top: 0;
@@ -1075,8 +1009,6 @@ body.modal-open {
   .ambassador-principles,
   .privilege-grid,
   .reward-row,
-  .referral-link-box,
-  .referral-link-form,
   .footer {
     grid-template-columns: 1fr;
   }
