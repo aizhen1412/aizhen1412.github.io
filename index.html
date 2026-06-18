@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="智能光电探测实验室招生与学术交流静态主页，面向光电探测器件、计算光谱、微纳光学、红外成像和智能感知方向。" />
+  <title>智能光电探测实验室招生与学术交流</title>
+  <link rel="stylesheet" href="./static.css" />
+</head>
+
+<body>
+  <header class="hero" id="top">
+    <canvas id="photonic-canvas" aria-hidden="true"></canvas>
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark">光</span>
+        <span>智能光电探测实验室</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#lab">实验室简介</a>
+        <a href="#research">研究方向</a>
+        <a href="#programs">招生项目</a>
+        <a href="#support">培养支持</a>
+        <a href="#platform">平台成果</a>
+        <a href="#outcomes">学生去向</a>
+        <a href="#apply">申请方式</a>
+        <a href="#referral">推荐说明</a>
+      </div>
+    </nav>
+    <section class="hero-inner">
+      <p class="hero-school">中国科学院大学杭州高等研究院</p>
+      <p class="hero-college">物理与光电工程学院</p>
+      <h1>
+        <span>智能光电探测器件</span>
+        <span>计算光谱与微纳光学</span>
+        <span>红外成像和智能感知</span>
+      </h1>
+      <p class="lead">
+        面向光电探测器件、计算光谱、微纳光学、红外成像和智能感知方向，开放本科实习、保研/考研交流、博士联合培养和博士后申请。
+      </p>
+      <p class="hero-audience">
+        适合有物理、光学、微电子、材料、电子信息、计算机、人工智能等背景，愿意长期参与科研训练的同学和青年学者。
+      </p>
+      <div class="hero-tags" aria-label="研究关键词">
+        <span>红外光谱芯片</span>
+        <span>计算光谱成像</span>
+        <span>微纳光学结构</span>
+        <span>智能感知算法</span>
+      </div>
+      <div class="hero-actions">
+        <a class="primary" href="#apply">查看申请方式</a>
+        <a class="secondary" href="#research">了解研究方向</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="page-section" id="lab">
+      <div class="section-head card-head">
+        <p class="eyebrow">Lab</p>
+        <h2>实验室简介</h2>
+        <p>
+          国科大杭州高等研究院（杭高院）是杭州市属事业单位，同时也是中国科学院大学（国科大）直属二级学院。本实验室凝聚了包括多名国家杰青在内的人才梯队。实验室具备一流的仪器实验平台，总价值超过 6000
+          万元，能够满足从材料生长、器件制备和器件表征等需求，可完成常见光电探测器、光电芯片的流片研发。
+        </p>
+        <p>
+          主要研究方向包括光谱编码结构及光谱芯片研究、光电探测器件研究、微型光谱仪及算法应用研究，面向光谱探测、智能探测、环境、工业和医学等场景开展交叉研究。
+        </p>
+      </div>
+    </section>
+
+    <section class="page-section alt" id="research">
+      <div class="section-head">
+        <p class="eyebrow">Research</p>
+        <h2>研究方向</h2>
+        <p>方向覆盖器件、系统、算法和应用场景，适合希望把物理机制、芯片平台和 AI 方法结合起来做科研的同学。</p>
+      </div>
+      <div class="research-grid" id="research-grid"></div>
+    </section>
+
+    <section class="page-section" id="programs">
+      <div class="section-head">
+        <p class="eyebrow">Programs</p>
+        <h2>招生项目与支持</h2>
+      </div>
+      <div class="program-tabs" id="program-tabs" role="tablist" aria-label="招生项目"></div>
+      <article class="program-detail" id="program-detail"></article>
+    </section>
+
+    <section class="page-section alt" id="support">
+      <div class="section-head">
+        <p class="eyebrow">Support</p>
+        <h2>培养与科研支持</h2>
+        <p>实验室重视长期科研训练、规范指导和稳定资源支持。具体培养安排、经费支持和合作方式以申请阶段沟通及学校政策为准。</p>
+      </div>
+      <div class="benefit-grid" id="support-grid"></div>
+    </section>
+
+    <section class="page-section" id="platform">
+      <div class="section-head">
+        <p class="eyebrow">Platform</p>
+        <h2>科研平台与代表成果</h2>
+      </div>
+      <div class="resource-layout" id="resource-list"></div>
+      <article class="publication-card">
+        <h3>代表成果与项目基础</h3>
+        <ul id="achievement-list"></ul>
+      </article>
+    </section>
+
+    <section class="page-section alt" id="outcomes">
+      <div class="section-head">
+        <p class="eyebrow">Alumni</p>
+        <h2>部分学生发展去向</h2>
+        <p>毕业生去向覆盖互联网大厂、科研院所、芯片/制造企业和继续深造。</p>
+      </div>
+      <div class="outcome-grid" id="outcome-list"></div>
+    </section>
+
+    <section class="page-section" id="apply">
+      <div class="section-head">
+        <p class="eyebrow">Application</p>
+        <h2>申请方式</h2>
+        <p>当前 GitHub Pages 版本为静态主页，不收集简历、不上传附件、不保存个人信息。请通过邮件主动投递材料，实验室人工查看后再沟通。</p>
+      </div>
+      <div class="apply-layout">
+        <article class="apply-card">
+          <h3>邮件投递材料</h3>
+          <p>请将简历、成绩单、代表性项目/论文/代码说明和研究计划整理为 PDF 或常见文档格式后发送至实验室联系人邮箱。</p>
+          <a class="primary" id="mail-link" href="mailto:hezhu@ucas.ac.cn?subject=智能光电探测实验室申请">发送邮件</a>
+          <button class="secondary light" id="copy-email" type="button">复制邮箱</button>
+          <p class="email-line">hezhu@ucas.ac.cn</p>
+        </article>
+        <div class="process-list" id="process-list"></div>
+      </div>
+    </section>
+
+    <section class="page-section alt" id="faq">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>常见问题</h2>
+        <p>以下回答用于帮助申请人判断是否适合投递，具体安排以实验室后续沟通为准。</p>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </section>
+
+    <section class="page-section referral-section" id="referral">
+      <div class="ambassador-layout">
+        <div>
+          <p class="eyebrow">Referral</p>
+          <h2>推荐合适的同学</h2>
+          <p>
+            如果你了解有科研兴趣、方向匹配、材料真实的同学，可以通过推荐同学页面生成推荐入口。推荐仅用于记录来源和后续沟通，不替代实验室人工审核。对真实、有效且经实验室确认的推荐，我们会根据候选人匹配度、后续沟通进展和实际贡献给予适当报酬或支持。
+          </p>
+          <div class="ambassador-actions">
+            <a class="primary ambassador-primary-link" href="./ambassador.html">进入推荐页面</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="research-modal" id="research-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="关闭">×</button>
+      <img id="modal-image" alt="" />
+      <div class="modal-content">
+        <p class="eyebrow">Research Detail</p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-short"></p>
+        <ul id="modal-details"></ul>
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <strong>智能光电探测实验室</strong>
+      <p>中国科学院大学杭州高等研究院 · 物理与光电工程学院</p>
+      <p>方向：光电探测器件 / 计算光谱 / 微纳光学 / 红外成像 / 智能感知</p>
+      <p>地址：杭州市象山支弄 1 号国科大杭州高等研究院格物楼 339b。</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://anthonyzhu1990.github.io/" target="_blank" rel="noreferrer">实验室主页</a>
+      <a href="http://hias.ucas.ac.cn/" target="_blank" rel="noreferrer">学院官网</a>
+      <a href="#apply">联系申请</a>
+    </div>
+  </footer>
+
+  <script src="./static.js"></script>
+</body>
+
+</html>
