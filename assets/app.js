@@ -1,5 +1,37 @@
 const content = window.SITE_CONTENT;
 
+function initTheme() {
+  const saved = localStorage.getItem('writer-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  updateThemeIcon(theme);
+
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('writer-theme', next);
+      updateThemeIcon(next);
+    });
+  });
+}
+
+function updateThemeIcon(theme) {
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+    btn.innerHTML = theme === 'dark' ? '☀' : '☾';
+    btn.setAttribute('aria-label', theme === 'dark' ? '切换到浅色模式' : '切换到深色模式');
+  });
+}
+
+function initHeader() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const check = () => header.classList.toggle('scrolled', window.scrollY > 12);
+  check();
+  window.addEventListener('scroll', check, { passive: true });
+}
+
 function formatDate(dateString) {
   return new Intl.DateTimeFormat('zh-CN', {
     year: 'numeric', month: 'long', day: 'numeric'
@@ -126,6 +158,8 @@ function renderNovel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initHeader();
   renderHome();
   renderArticle();
   renderNovel();
