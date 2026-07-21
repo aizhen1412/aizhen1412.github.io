@@ -55,13 +55,14 @@ img { max-width: 100%; display: block; }
 .container { width: min(calc(100% - 40px), var(--content)); margin: 0 auto; }
 
 .site-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 20;
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
+
+.reading-page .site-header { display: none; }
 
 .site-header.scrolled {
   background: color-mix(in srgb, var(--bg) 84%, transparent);
