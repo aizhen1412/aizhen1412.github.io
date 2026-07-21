@@ -221,7 +221,6 @@ img { max-width: 100%; display: block; }
   top: 104px;
   z-index: 5;
   width: 72px;
-  height: 72px;
   max-height: 72px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -246,7 +245,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 900px) {
   .section { padding: 42px 0 56px; }
   .novel-card { min-height: 420px; }
-  .chapter-nav { position: static; width: auto; height: auto; max-height: none; overflow: visible; padding: 20px; box-shadow: none; }
+  .chapter-nav { position: static; width: auto; max-height: none; overflow: visible; padding: 20px; box-shadow: none; }
   .chapter-nav h3, .chapter-nav:not(:hover):not(:focus-within) h3 { min-height: 0; margin: 0 0 14px; padding: 0; color: var(--text); font-size: 16px; }
   .chapter-nav h3::before, .chapter-nav:not(:hover):not(:focus-within) h3::before { position: static; transform: none; margin-right: 12px; font-size: 16px; }
   .chapter-list, .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
