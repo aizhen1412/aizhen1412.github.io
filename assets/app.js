@@ -58,10 +58,11 @@ function essayCard(essay, index) {
   const coverStyle = essay.cover.startsWith('assets/')
     ? `background-image:url('${essay.cover}');background-size:cover;background-position:center;`
     : `background:${essay.cover}`;
+  const coverClass = essay.cover.startsWith('assets/') ? ' image-cover' : '';
   return `
     <article class="essay-card">
       <a href="article.html?id=${essay.id}" aria-label="阅读《${essay.title}》">
-        <div class="essay-cover" style="${coverStyle}">
+        <div class="essay-cover${coverClass}" style="${coverStyle}">
           <span class="essay-index">${String(index + 1).padStart(2, '0')}</span>
         </div>
         <div class="essay-body">

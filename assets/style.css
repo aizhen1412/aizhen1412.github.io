@@ -186,7 +186,8 @@ img { max-width: 100%; display: block; }
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .essay-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 38%, var(--line)); }
-.essay-cover { height: 210px; position: relative; overflow: hidden; }
+.essay-cover { aspect-ratio: 16 / 9; height: auto; position: relative; overflow: hidden; }
+.essay-cover.image-cover { background-size: contain !important; background-repeat: no-repeat; background-color: #1f2b32; }
 .essay-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.15), transparent); }
 .essay-index { position: absolute; left: 20px; top: 18px; z-index: 2; color: rgba(255,255,255,.9); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; letter-spacing: .15em; }
 .essay-body { padding: 26px; }
@@ -219,18 +220,19 @@ img { max-width: 100%; display: block; }
   top: 104px;
   z-index: 5;
   width: 72px;
+  max-height: 72px;
   justify-self: start;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 16px;
   background: var(--surface);
-  transition: box-shadow .25s ease;
+  transition: width .28s ease, max-height .32s ease, box-shadow .25s ease;
 }
 .chapter-nav h3 { margin: 0 0 14px; white-space: nowrap; font-size: 16px; }
 .chapter-nav h3::before { content: "☰"; display: inline-block; margin-right: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
 .chapter-list { display: grid; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
-.chapter-nav:hover, .chapter-nav:focus-within { width: 280px; box-shadow: var(--shadow); }
+.chapter-nav:hover, .chapter-nav:focus-within { width: 280px; max-height: 520px; box-shadow: var(--shadow); }
 .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
 .chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 0; margin-bottom: 0; }
 .chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 0; font-size: 20px; }
@@ -245,7 +247,7 @@ img { max-width: 100%; display: block; }
   .section { padding: 42px 0 56px; }
   .novel-card { min-height: 420px; }
   .chapter-layout { grid-template-columns: 1fr; gap: 28px; }
-  .chapter-nav { position: static; width: auto; overflow: visible; padding: 20px; box-shadow: none; }
+  .chapter-nav { position: static; width: auto; max-height: none; overflow: visible; padding: 20px; box-shadow: none; }
   .chapter-nav h3, .chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 16px; margin-bottom: 14px; }
   .chapter-nav h3::before, .chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 12px; font-size: 16px; }
   .chapter-list, .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
@@ -281,7 +283,7 @@ img { max-width: 100%; display: block; }
   .reader-shell { padding: 38px 0 70px; }
   .reader-header { margin-bottom: 34px; }
   .reader-title { font-size: clamp(36px, 12vw, 52px); }
-  .essay-cover { height: 175px; }
+  .essay-cover { min-height: 0; }
   .essay-body { padding: 20px; }
   .essay-card h3 { font-size: 24px; }
   .reader-content { font-size: 17px; line-height: 2; letter-spacing: .01em; }
