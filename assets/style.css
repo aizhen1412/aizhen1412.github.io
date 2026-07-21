@@ -214,28 +214,28 @@ img { max-width: 100%; display: block; }
 .reader-content p:first-child::first-letter { float: left; font-size: 4.3em; line-height: .9; padding: .08em .12em 0 0; color: var(--accent); }
 .reader-actions { display: flex; justify-content: space-between; gap: 14px; margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--line); }
 
-.chapter-layout { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 32px; align-items: start; }
+.chapter-layout { display: block; }
 .chapter-nav {
-  position: sticky;
+  position: fixed;
+  left: 20px;
   top: 104px;
   z-index: 5;
   width: 72px;
+  height: 72px;
   max-height: 72px;
-  justify-self: start;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 16px;
   background: var(--surface);
-  transition: width .28s ease, max-height .32s ease, box-shadow .25s ease;
+  transition: width .32s cubic-bezier(.22, .61, .36, 1), max-height .38s cubic-bezier(.22, .61, .36, 1), box-shadow .25s ease;
 }
-.chapter-nav h3 { margin: 0 0 14px; white-space: nowrap; font-size: 16px; }
-.chapter-nav h3::before { content: "☰"; display: inline-block; margin-right: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
-.chapter-list { display: grid; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+.chapter-nav h3 { position: relative; min-height: 72px; margin: 0; padding: 0 16px 0 46px; display: flex; align-items: center; white-space: nowrap; color: transparent; font-size: 16px; transition: color .18s ease; }
+.chapter-nav h3::before { content: "☰"; position: absolute; left: 50%; transform: translateX(-50%); color: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 20px; line-height: 1; transition: left .32s cubic-bezier(.22, .61, .36, 1), transform .32s cubic-bezier(.22, .61, .36, 1); }
+.chapter-list { display: grid; gap: 6px; padding: 0 16px 16px; opacity: 0; pointer-events: none; transition: opacity .2s ease .08s; }
 .chapter-nav:hover, .chapter-nav:focus-within { width: 280px; max-height: 520px; box-shadow: var(--shadow); }
 .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
-.chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 0; margin-bottom: 0; }
-.chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 0; font-size: 20px; }
+.chapter-nav:hover h3, .chapter-nav:focus-within h3 { color: var(--text); }
+.chapter-nav:hover h3::before, .chapter-nav:focus-within h3::before { left: 16px; transform: translateX(0); }
 .chapter-link { padding: 10px 12px; border-radius: 10px; color: var(--muted); font-size: 14px; font-family: ui-sans-serif, system-ui, sans-serif; }
 .chapter-link:hover, .chapter-link.active { background: var(--accent-soft); color: var(--accent); }
 .chapter-main { min-width: 0; }
@@ -246,10 +246,9 @@ img { max-width: 100%; display: block; }
 @media (max-width: 900px) {
   .section { padding: 42px 0 56px; }
   .novel-card { min-height: 420px; }
-  .chapter-layout { grid-template-columns: 1fr; gap: 28px; }
-  .chapter-nav { position: static; width: auto; max-height: none; overflow: visible; padding: 20px; box-shadow: none; }
-  .chapter-nav h3, .chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 16px; margin-bottom: 14px; }
-  .chapter-nav h3::before, .chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 12px; font-size: 16px; }
+  .chapter-nav { position: static; width: auto; height: auto; max-height: none; overflow: visible; padding: 20px; box-shadow: none; }
+  .chapter-nav h3, .chapter-nav:not(:hover):not(:focus-within) h3 { min-height: 0; margin: 0 0 14px; padding: 0; color: var(--text); font-size: 16px; }
+  .chapter-nav h3::before, .chapter-nav:not(:hover):not(:focus-within) h3::before { position: static; transform: none; margin-right: 12px; font-size: 16px; }
   .chapter-list, .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
   .chapter-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .chapter-link { min-height: 44px; display: flex; align-items: center; }
