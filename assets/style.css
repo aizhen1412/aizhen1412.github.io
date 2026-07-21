@@ -213,10 +213,27 @@ img { max-width: 100%; display: block; }
 .reader-content p:first-child::first-letter { float: left; font-size: 4.3em; line-height: .9; padding: .08em .12em 0 0; color: var(--accent); }
 .reader-actions { display: flex; justify-content: space-between; gap: 14px; margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--line); }
 
-.chapter-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 60px; align-items: start; }
-.chapter-nav { position: sticky; top: 104px; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; background: var(--surface); }
-.chapter-nav h3 { margin: 0 0 14px; font-size: 16px; }
-.chapter-list { display: grid; gap: 6px; }
+.chapter-layout { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 32px; align-items: start; }
+.chapter-nav {
+  position: sticky;
+  top: 104px;
+  z-index: 5;
+  width: 72px;
+  justify-self: start;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  background: var(--surface);
+  transition: box-shadow .25s ease;
+}
+.chapter-nav h3 { margin: 0 0 14px; white-space: nowrap; font-size: 16px; }
+.chapter-nav h3::before { content: "☰"; display: inline-block; margin-right: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
+.chapter-list { display: grid; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+.chapter-nav:hover, .chapter-nav:focus-within { width: 280px; box-shadow: var(--shadow); }
+.chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
+.chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 0; margin-bottom: 0; }
+.chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 0; font-size: 20px; }
 .chapter-link { padding: 10px 12px; border-radius: 10px; color: var(--muted); font-size: 14px; font-family: ui-sans-serif, system-ui, sans-serif; }
 .chapter-link:hover, .chapter-link.active { background: var(--accent-soft); color: var(--accent); }
 .chapter-main { min-width: 0; }
@@ -228,7 +245,10 @@ img { max-width: 100%; display: block; }
   .section { padding: 42px 0 56px; }
   .novel-card { min-height: 420px; }
   .chapter-layout { grid-template-columns: 1fr; gap: 28px; }
-  .chapter-nav { position: static; }
+  .chapter-nav { position: static; width: auto; overflow: visible; padding: 20px; box-shadow: none; }
+  .chapter-nav h3, .chapter-nav:not(:hover):not(:focus-within) h3 { font-size: 16px; margin-bottom: 14px; }
+  .chapter-nav h3::before, .chapter-nav:not(:hover):not(:focus-within) h3::before { margin-right: 12px; font-size: 16px; }
+  .chapter-list, .chapter-nav:hover .chapter-list, .chapter-nav:focus-within .chapter-list { opacity: 1; pointer-events: auto; }
   .chapter-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .chapter-link { min-height: 44px; display: flex; align-items: center; }
 }
