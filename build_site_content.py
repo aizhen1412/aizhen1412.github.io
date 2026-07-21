@@ -75,7 +75,7 @@ def build_internet_article():
         "date": str(date.today()),
         "readingTime": "约 4 分钟",
         "tags": ["随笔", "互联网", "数字鸿沟"],
-        "cover": "linear-gradient(135deg, #433e65 0%, #8896b3 100%)",
+        "cover": "assets/internet-tech-bullying-cover.png",
         "content": source,
     }
 
