@@ -48,6 +48,38 @@ def build_article():
     }
 
 
+def build_rocking_horse():
+    return {
+        "id": "rocking-horse",
+        "title": "摇摇车",
+        "excerpt": "一场迟来的尝试，让没有被满足的好奇得到了小小的回应。",
+        "date": str(date.today()),
+        "readingTime": "约 2 分钟",
+        "tags": ["随笔", "童年", "记忆"],
+        "cover": "linear-gradient(135deg, #b78461 0%, #e5c9a5 100%)",
+        "content": [
+            "小时候家里拮据，街边那辆摇摇车总像是一个遥远的小世界。每次路过，看见它亮着五颜六色的灯，伴着音乐轻轻摇摆，总忍不住多看几眼，却始终没有真正坐上去过。",
+            "后来和几个伙伴偶然说起，才发觉大家都留着同样的好奇。于是凑了几块钱，交给店老板换来硬币，再郑重其事地投进摇摇车里。",
+            "灯亮了，音乐响了。满心欢喜地坐上去，它却一动不动。换了另一个人，仍是如此。那时的我们，早已超过了它所能承受的重量。",
+            "大家围在摇摇车旁，同时把一只脚放上去，借着那一点轻轻的摇晃，共同完成了这场迟来的尝试。它终究没能真正载着我们摇起来，但那份没有被满足的好奇，也算在那一刻，得到了一个小小的回应。",
+        ],
+    }
+
+
+def build_internet_article():
+    source = paragraphs(next(path.name for path in ROOT.glob("*科技霸凌*.docx")))
+    return {
+        "id": "internet-tech-bullying",
+        "title": "当互联网成为一种“科技霸凌”",
+        "excerpt": "当“懂技术”成为特权，数字世界也可能变成让人无所适从的迷宫。",
+        "date": str(date.today()),
+        "readingTime": "约 4 分钟",
+        "tags": ["随笔", "互联网", "数字鸿沟"],
+        "cover": "linear-gradient(135deg, #433e65 0%, #8896b3 100%)",
+        "content": source,
+    }
+
+
 def build_novel():
     source = paragraphs("小说.docx")
     chapters = []
@@ -78,7 +110,7 @@ def build_novel():
 
 
 content = {
-    "essays": [build_article()],
+    "essays": [build_article(), build_rocking_horse(), build_internet_article()],
     "novel": build_novel(),
 }
 

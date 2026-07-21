@@ -30,6 +30,14 @@
 - `essays`：添加或替换短篇文章。
 - `novel`：修改小说信息并添加章节。
 
+### 添加短文或随笔
+
+在 `essays` 数组中复制一篇现有文章，修改 `id`（必须唯一）、`title`、`excerpt`、`tags` 和 `content`。`content` 中每一项就是一个自然段；需要小标题时使用 `{ "type": "heading", "text": "小标题" }`。
+
+### 添加小说章节
+
+在 `novel.chapters` 数组末尾复制一个章节，按顺序增加 `number`，再填写 `title` 和 `content`。`content` 中每一项就是一个自然段。小说原稿若有新章节，也可以补到 `小说.docx` 后运行 `build_site_content.py`，网站数据会自动更新。
+
 每篇短文需要一个唯一的 `id`，阅读链接会自动使用：
 
 ```text
