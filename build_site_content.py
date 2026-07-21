@@ -96,6 +96,8 @@ def build_novel():
             current["content"].append(text)
     if current:
         chapters.append(current)
+    for chapter in chapters:
+        chapter["readingTime"] = f"约 {max(1, -(-len(''.join(chapter['content'])) // 400))} 分钟"
     words = sum(len("".join(chapter["content"])) for chapter in chapters)
     return {
         "title": "未命名小说",

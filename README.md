@@ -38,6 +38,8 @@
 
 在 `novel.chapters` 数组末尾复制一个章节，按顺序增加 `number`，再填写 `title` 和 `content`。`content` 中每一项就是一个自然段。小说原稿若有新章节，也可以补到 `小说.docx` 后运行 `build_site_content.py`，网站数据会自动更新。
 
+阅读时间按中文正文每分钟约 400 字估算，并向上取整；运行 `build_site_content.py` 时会自动为小说章节生成阅读时间。
+
 每篇短文需要一个唯一的 `id`，阅读链接会自动使用：
 
 ```text

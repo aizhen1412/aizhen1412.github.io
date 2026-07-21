@@ -147,7 +147,7 @@ function renderNovel() {
       <header class="reader-header">
         <div class="eyebrow">${content.novel.title}</div>
         <h1 class="reader-title">第${chapter.number}章<br>${chapter.title}</h1>
-        <div class="reader-meta"><span>${content.novel.status}</span><span>${content.novel.wordCount}</span><span>${formatDate(content.novel.updated)} 更新</span></div>
+        <div class="reader-meta"><span>${content.novel.status}</span><span>${chapter.readingTime}</span><span>${content.novel.wordCount}</span><span>${formatDate(content.novel.updated)} 更新</span></div>
       </header>
       <article class="reader-content">${renderBlocks(chapter.content)}</article>
       <div class="reader-actions">
