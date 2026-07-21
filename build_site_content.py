@@ -56,7 +56,7 @@ def build_rocking_horse():
         "date": str(date.today()),
         "readingTime": "约 2 分钟",
         "tags": ["随笔", "童年", "记忆"],
-        "cover": "linear-gradient(135deg, #b78461 0%, #e5c9a5 100%)",
+        "cover": "assets/rocking-horse-cover.png",
         "content": [
             "小时候家里拮据，街边那辆摇摇车总像是一个遥远的小世界。每次路过，看见它亮着五颜六色的灯，伴着音乐轻轻摇摆，总忍不住多看几眼，却始终没有真正坐上去过。",
             "后来和几个伙伴偶然说起，才发觉大家都留着同样的好奇。于是凑了几块钱，交给店老板换来硬币，再郑重其事地投进摇摇车里。",
