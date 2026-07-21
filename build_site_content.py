@@ -81,7 +81,7 @@ def build_internet_article():
 
 
 def build_novel():
-    source = paragraphs("小说.docx")
+    source = paragraphs("还原.docx")
     chapters = []
     current = None
     chapter_pattern = re.compile(r"^第([一二三四五六七八九十]+)章[　\s]*(.+)$")
@@ -100,7 +100,7 @@ def build_novel():
         chapter["readingTime"] = f"约 {max(1, -(-len(''.join(chapter['content'])) // 400))} 分钟"
     words = sum(len("".join(chapter["content"])) for chapter in chapters)
     return {
-        "title": "未命名小说",
+        "title": "还原",
         "subtitle": "小说初稿（连载中）",
         "description": "围绕周叙的故乡、童年与记忆展开的小说初稿。",
         "status": "连载中",

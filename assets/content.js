@@ -344,7 +344,7 @@ window.SITE_CONTENT = {
     }
   ],
   "novel": {
-    "title": "未命名小说",
+    "title": "还原",
     "subtitle": "小说初稿（连载中）",
     "description": "围绕周叙的故乡、童年与记忆展开的小说初稿。",
     "status": "连载中",
