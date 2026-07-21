@@ -1,4 +1,4 @@
-# 加乐 罗 · 作品集
+# 阅读网站
 
 无需构建工具的静态个人作品集，收录一篇技术文章与一部连载小说。
 
@@ -9,7 +9,6 @@
 ├── index.html          # 首页
 ├── article.html        # 短文阅读页
 ├── novel.html          # 小说章节页
-├── about.html          # 关于作者
 ├── 404.html            # GitHub Pages 404 页面
 └── assets
     ├── content.js      # 你的所有文字内容和个人信息
@@ -28,7 +27,6 @@
 
 打开 `assets/content.js`：
 
-- `profile`：修改笔名、简介、邮箱和 GitHub 地址。
 - `essays`：添加或替换短篇文章。
 - `novel`：修改小说信息并添加章节。
 

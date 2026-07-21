@@ -6,23 +6,6 @@ function formatDate(dateString) {
   }).format(new Date(dateString));
 }
 
-function applyProfile() {
-  document.querySelectorAll('[data-profile="name"]').forEach(el => el.textContent = content.profile.name);
-  document.querySelectorAll('[data-profile="tagline"]').forEach(el => el.textContent = content.profile.tagline);
-  document.querySelectorAll('[data-profile="bio"]').forEach(el => el.textContent = content.profile.bio);
-  document.querySelectorAll('[data-profile="email"]').forEach(el => {
-    const item = el.closest('[data-contact-email]');
-    if (!content.profile.email) {
-      item?.remove();
-      return;
-    }
-    el.textContent = content.profile.email;
-    el.href = `mailto:${content.profile.email}`;
-  });
-  document.querySelectorAll('[data-profile="github"]').forEach(el => el.href = content.profile.github);
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-}
-
 function escapeHtml(value) {
   return String(value).replace(/[&<>'"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;'
@@ -93,7 +76,6 @@ function renderHome() {
   if (!grid) return;
   grid.innerHTML = content.essays.map(essayCard).join('');
 
-  document.querySelector('[data-essay-count]').textContent = `${content.essays.length} 篇短文`;
   document.querySelector('[data-novel-title]').textContent = content.novel.title;
   document.querySelector('[data-novel-desc]').textContent = content.novel.description;
   document.querySelector('[data-novel-status]').textContent = content.novel.status;
@@ -126,7 +108,7 @@ function renderArticle() {
     return;
   }
 
-  document.title = `${essay.title} · ${content.profile.name}`;
+  document.title = essay.title;
   root.innerHTML = `
     <header class="reader-header">
       <div class="eyebrow">Essay</div>
@@ -175,17 +157,10 @@ function renderNovel() {
     </div>`;
 }
 
-function renderAbout() {
-  const name = document.querySelector('[data-about-name]');
-  if (name) name.textContent = content.profile.name;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  applyProfile();
   initTheme();
   initHeader();
   renderHome();
   renderArticle();
   renderNovel();
-  renderAbout();
 });

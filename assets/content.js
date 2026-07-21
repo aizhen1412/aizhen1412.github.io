@@ -1,12 +1,4 @@
 window.SITE_CONTENT = {
-  "profile": {
-    "name": "加乐 罗",
-    "tagline": "写下尚未完成的故事与技术随笔。",
-    "bio": "这里收录我的小说初稿，以及关于技术、语言和人与机器关系的文章。",
-    "location": "中国",
-    "email": "",
-    "github": "https://github.com/aizhen1412"
-  },
   "essays": [
     {
       "id": "punched-tape-to-natural-language",
