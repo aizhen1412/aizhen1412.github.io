@@ -159,6 +159,52 @@ function renderNovel() {
         ${next ? `<a class="button" href="novel.html?chapter=${next.number}">下一章 →</a>` : '<a class="button" href="index.html#essays">阅读短文 →</a>'}
       </div>
     </div>`;
+
+  initNovelIllustrationGallery();
+}
+
+const novelIllustrations = [
+  'assets/novel-illustration-1.png',
+  'assets/novel-illustration-2.png',
+  'assets/novel-illustration-3.png'
+];
+
+function initNovelIllustrationGallery() {
+  if (!document.body.classList.contains('novel-reading')) return;
+
+  document.querySelector('[data-novel-illustration-gallery]')?.remove();
+  const gallery = document.createElement('aside');
+  gallery.className = 'illustration-gallery';
+  gallery.dataset.novelIllustrationGallery = '';
+  gallery.setAttribute('aria-label', '\u63d2\u753b\u80cc\u666f');
+  gallery.innerHTML = `
+    <p class="illustration-gallery-title">\u63d2\u753b\u80cc\u666f</p>
+    <div class="illustration-options">
+      ${novelIllustrations.map((src, index) => `
+        <button class="illustration-option" type="button" data-illustration-index="${index}" aria-label="\u5207\u6362\u5230\u7b2c ${index + 1} \u5f20\u63d2\u753b">
+          <img src="${src}" alt="" loading="lazy">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+        </button>`).join('')}
+    </div>`;
+  document.body.append(gallery);
+
+  const savedIndex = Number(localStorage.getItem('novel-illustration-index'));
+  const initialIndex = Number.isInteger(savedIndex) && novelIllustrations[savedIndex] ? savedIndex : 0;
+  const applyIllustration = index => {
+    document.documentElement.style.setProperty('--novel-illustration', `url("${novelIllustrations[index]}")`);
+    localStorage.setItem('novel-illustration-index', String(index));
+    gallery.querySelectorAll('[data-illustration-index]').forEach(button => {
+      const active = Number(button.dataset.illustrationIndex) === index;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+  };
+
+  gallery.addEventListener('click', event => {
+    const button = event.target.closest('[data-illustration-index]');
+    if (button) applyIllustration(Number(button.dataset.illustrationIndex));
+  });
+  applyIllustration(initialIndex);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
