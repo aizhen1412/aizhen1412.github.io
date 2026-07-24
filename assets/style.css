@@ -285,7 +285,7 @@ img { max-width: 100%; display: block; }
 .chapter-nav:hover h3, .chapter-nav:focus-within h3 { color: var(--text); }
 .chapter-nav:hover h3::before, .chapter-nav:focus-within h3::before { left: 16px; }
 .chapter-link { padding: 10px 12px; border-radius: 10px; color: var(--muted); font-size: 14px; font-family: ui-sans-serif, system-ui, sans-serif; }
-.chapter-link.chapter-home { margin-bottom: 6px; color: var(--accent); background: color-mix(in srgb, var(--accent-soft) 68%, transparent); }
+.chapter-link.chapter-home { margin-bottom: 6px; color: var(--accent); }
 .chapter-link:hover, .chapter-link.active { background: var(--accent-soft); color: var(--accent); }
 .chapter-main { min-width: 0; }
 .chapter-main .reader-shell { width: auto; padding-top: 0; }
