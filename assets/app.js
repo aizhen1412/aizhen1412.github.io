@@ -175,14 +175,12 @@ function initNovelIllustrationGallery(novelCard) {
   if (!novelCard) return;
 
   novelCard.querySelector('[data-novel-illustration-gallery]')?.remove();
-  const gallery = document.createElement('button');
-  gallery.type = 'button';
-  gallery.className = 'illustration-next';
+  const gallery = document.createElement('div');
+  gallery.className = 'illustration-stack';
   gallery.dataset.novelIllustrationGallery = '';
-  gallery.setAttribute('aria-label', '\u5207\u6362\u5230\u4e0b\u4e00\u5f20\u63d2\u753b');
   gallery.innerHTML = `
-    <img src="" alt="" loading="lazy">
-    <span>\u4e0b\u4e00\u5f20 &#8594;</span>`;
+    <div class="illustration-current"><img data-current-illustration src="" alt="" loading="lazy"></div>
+    <button class="illustration-next" type="button" aria-label="\u5207\u6362\u5230\u4e0b\u4e00\u5f20\u63d2\u753b"><img data-next-illustration src="" alt="" loading="lazy"></button>`;
   novelCard.append(gallery);
 
   const savedIndex = Number(localStorage.getItem('novel-illustration-index'));
@@ -190,9 +188,10 @@ function initNovelIllustrationGallery(novelCard) {
   let currentIndex = initialIndex;
   const applyIllustration = index => {
     currentIndex = index;
-    novelCard.style.backgroundImage = `url("${novelIllustrations[index]}")`;
+    novelCard.style.backgroundImage = 'none';
     localStorage.setItem('novel-illustration-index', String(index));
-    gallery.querySelector('img').src = novelIllustrations[(index + 1) % novelIllustrations.length];
+    gallery.querySelector('[data-current-illustration]').src = novelIllustrations[index];
+    gallery.querySelector('[data-next-illustration]').src = novelIllustrations[(index + 1) % novelIllustrations.length];
   };
 
   const startAutoRotation = () => {
@@ -201,7 +200,7 @@ function initNovelIllustrationGallery(novelCard) {
       applyIllustration((currentIndex + 1) % novelIllustrations.length);
     }, 7000);
   };
-  gallery.addEventListener('click', () => {
+  gallery.querySelector('.illustration-next').addEventListener('click', () => {
     applyIllustration((currentIndex + 1) % novelIllustrations.length);
     startAutoRotation();
   });
