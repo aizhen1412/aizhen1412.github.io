@@ -179,6 +179,7 @@ function initNovelIllustrationGallery(novelCard) {
   gallery.className = 'illustration-stack';
   gallery.dataset.novelIllustrationGallery = '';
   gallery.innerHTML = `
+    <div class="illustration-third"><img data-third-illustration src="" alt="" loading="lazy"></div>
     <div class="illustration-current"><img data-current-illustration src="" alt="" loading="lazy"></div>
     <button class="illustration-next" type="button" aria-label="\u5207\u6362\u5230\u4e0b\u4e00\u5f20\u63d2\u753b"><img data-next-illustration src="" alt="" loading="lazy"></button>`;
   novelCard.append(gallery);
@@ -186,12 +187,26 @@ function initNovelIllustrationGallery(novelCard) {
   const savedIndex = Number(localStorage.getItem('novel-illustration-index'));
   const initialIndex = Number.isInteger(savedIndex) && novelIllustrations[savedIndex] ? savedIndex : 0;
   let currentIndex = initialIndex;
-  const applyIllustration = index => {
+  let imageTransitionTimer;
+  const applyIllustration = (index, animate = true) => {
     currentIndex = index;
-    novelCard.style.backgroundImage = 'none';
     localStorage.setItem('novel-illustration-index', String(index));
-    gallery.querySelector('[data-current-illustration]').src = novelIllustrations[index];
-    gallery.querySelector('[data-next-illustration]').src = novelIllustrations[(index + 1) % novelIllustrations.length];
+    const updateSources = () => {
+      novelCard.style.backgroundImage = 'none';
+      gallery.querySelector('[data-current-illustration]').src = novelIllustrations[index];
+      gallery.querySelector('[data-next-illustration]').src = novelIllustrations[(index + 1) % novelIllustrations.length];
+      gallery.querySelector('[data-third-illustration]').src = novelIllustrations[(index + 2) % novelIllustrations.length];
+    };
+    window.clearTimeout(imageTransitionTimer);
+    if (!animate) {
+      updateSources();
+      return;
+    }
+    gallery.classList.add('is-switching');
+    imageTransitionTimer = window.setTimeout(() => {
+      updateSources();
+      gallery.classList.remove('is-switching');
+    }, 180);
   };
 
   const startAutoRotation = () => {
@@ -204,7 +219,7 @@ function initNovelIllustrationGallery(novelCard) {
     applyIllustration((currentIndex + 1) % novelIllustrations.length);
     startAutoRotation();
   });
-  applyIllustration(initialIndex);
+  applyIllustration(initialIndex, false);
   startAutoRotation();
 }
 
