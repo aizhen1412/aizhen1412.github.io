@@ -71,7 +71,7 @@ img { max-width: 100%; display: block; }
   width: auto;
   height: auto;
   transform: none;
-  clip-path: inset(0 -78px -86px 0);
+  clip-path: none;
 }
 .illustration-current, .illustration-next, .illustration-third {
   position: absolute;
@@ -86,23 +86,25 @@ img { max-width: 100%; display: block; }
 .illustration-current { inset: 0; z-index: 2; }
 .illustration-current::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 15, 20, .78) 0%, rgba(5, 15, 20, .45) 52%, rgba(5, 15, 20, .08) 100%); }
 .illustration-third {
-  right: -54px;
-  bottom: -48px;
+  top: 44px;
+  left: 56px;
   z-index: 0;
+  padding: 0;
+  cursor: pointer;
   transform: rotate(5.5deg);
-  pointer-events: none;
+  transform-origin: left top;
 }
 .illustration-next {
-  right: -30px;
-  bottom: -26px;
+  top: 22px;
+  left: 28px;
   z-index: 1;
   padding: 0;
   cursor: pointer;
-  clip-path: polygon(calc(100% - 34px) 0, 100% 0, 100% 100%, 0 100%, 0 calc(100% - 34px), calc(100% - 34px) calc(100% - 34px));
   transform: rotate(3deg);
+  transform-origin: left top;
   transition: right .28s ease, bottom .28s ease, transform .28s ease, box-shadow .25s ease;
 }
-.illustration-next:hover, .illustration-next:focus-visible { box-shadow: 0 28px 56px rgba(0,0,0,.42); outline: none; }
+.illustration-next:hover, .illustration-next:focus-visible, .illustration-third:hover, .illustration-third:focus-visible { box-shadow: 0 28px 56px rgba(0,0,0,.42); outline: none; }
 .illustration-current img, .illustration-next img, .illustration-third img { width: 100%; height: 100%; object-fit: cover; transition: opacity .26s ease, transform .4s cubic-bezier(.22, .61, .36, 1), filter .26s ease; }
 .illustration-stack.is-switching img { opacity: 0; transform: scale(1.025); filter: saturate(.86); }
 
@@ -160,7 +162,7 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-xl);
   padding: clamp(30px, 6vw, 72px);
   color: white;
-  background-color: #21332f;
+  background-color: transparent;
   background-position: center;
   background-size: cover;
   box-shadow: var(--shadow);
@@ -327,7 +329,8 @@ img { max-width: 100%; display: block; }
   .chapter-nav { padding: 16px; border-radius: 18px; }
   .chapter-link { padding: 8px 10px; font-size: 13px; }
   .reader-shell { padding: 38px 0 70px; }
-  .illustration-next { right: -18px; bottom: -18px; }
+  .illustration-next { top: 16px; left: 18px; }
+  .illustration-third { top: 32px; left: 36px; }
   .reader-header { margin-bottom: 34px; }
   .reader-title { font-size: clamp(36px, 12vw, 52px); }
   .essay-cover { min-height: 0; }

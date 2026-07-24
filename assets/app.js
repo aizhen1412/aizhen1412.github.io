@@ -179,7 +179,7 @@ function initNovelIllustrationGallery(novelCard) {
   gallery.className = 'illustration-stack';
   gallery.dataset.novelIllustrationGallery = '';
   gallery.innerHTML = `
-    <div class="illustration-third"><img data-third-illustration src="" alt="" loading="lazy"></div>
+    <button class="illustration-third" type="button" aria-label="\u5207\u6362\u5230\u7b2c\u4e09\u5f20\u63d2\u753b"><img data-third-illustration src="" alt="" loading="lazy"></button>
     <div class="illustration-current"><img data-current-illustration src="" alt="" loading="lazy"></div>
     <button class="illustration-next" type="button" aria-label="\u5207\u6362\u5230\u4e0b\u4e00\u5f20\u63d2\u753b"><img data-next-illustration src="" alt="" loading="lazy"></button>`;
   novelCard.append(gallery);
@@ -217,6 +217,10 @@ function initNovelIllustrationGallery(novelCard) {
   };
   gallery.querySelector('.illustration-next').addEventListener('click', () => {
     applyIllustration((currentIndex + 1) % novelIllustrations.length);
+    startAutoRotation();
+  });
+  gallery.querySelector('.illustration-third').addEventListener('click', () => {
+    applyIllustration((currentIndex + 2) % novelIllustrations.length);
     startAutoRotation();
   });
   applyIllustration(initialIndex, false);
