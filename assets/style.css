@@ -168,6 +168,10 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow);
   display: grid;
   align-items: end;
+  transition: transform .32s cubic-bezier(.22, .61, .36, 1), box-shadow .32s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .novel-card:hover { transform: translateY(-8px); box-shadow: 0 30px 82px rgba(36, 48, 45, .18); }
 }
 .novel-card::before {
   content: "";
