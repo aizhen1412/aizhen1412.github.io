@@ -138,7 +138,7 @@ function renderNovel() {
   const chapter = content.novel.chapters.find(item => item.number === chapterNumber) || content.novel.chapters[0];
 
   document.title = `${content.novel.title} · 第${chapter.number}章`;
-  nav.innerHTML = `<a class="chapter-link chapter-home" href="index.html#novel">&#8592; &#36820;&#22238;&#39318;&#39029;</a>` + content.novel.chapters.map(item => `
+  nav.innerHTML = `<a class="chapter-link chapter-home" href="index.html#novel">&#36820;&#22238;&#39318;&#39029;</a>` + content.novel.chapters.map(item => `
     <a class="chapter-link ${item.number === chapter.number ? 'active' : ''}" href="novel.html?chapter=${item.number}">
       ${String(item.number).padStart(2, '0')} · ${item.title}
     </a>`).join('');
