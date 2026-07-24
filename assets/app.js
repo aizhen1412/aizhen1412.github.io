@@ -166,7 +166,9 @@ function renderNovel() {
 const novelIllustrations = [
   'assets/novel-illustration-1.png',
   'assets/novel-illustration-2.png',
-  'assets/novel-illustration-3.png'
+  'assets/novel-illustration-3.png',
+  'assets/novel-illustration-4.png',
+  'assets/novel-illustration-5.png'
 ];
 let novelIllustrationTimer;
 
