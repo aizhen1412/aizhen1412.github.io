@@ -85,7 +85,8 @@ function renderHome() {
   document.querySelector('[data-novel-status]').textContent = content.novel.status;
   document.querySelector('[data-novel-words]').textContent = content.novel.wordCount;
   document.querySelector('[data-novel-updated]').textContent = `更新于 ${formatDate(content.novel.updated)}`;
-  document.querySelector('[data-novel-card]').style.background = content.novel.cover;
+  const novelCard = document.querySelector('[data-novel-card]');
+  initNovelIllustrationGallery(novelCard);
 
   const search = document.querySelector('[data-search]');
   search?.addEventListener('input', e => {
@@ -137,7 +138,7 @@ function renderNovel() {
   const chapter = content.novel.chapters.find(item => item.number === chapterNumber) || content.novel.chapters[0];
 
   document.title = `${content.novel.title} · 第${chapter.number}章`;
-  nav.innerHTML = content.novel.chapters.map(item => `
+  nav.innerHTML = `<a class="chapter-link chapter-home" href="index.html#novel">&#8592; &#36820;&#22238;&#39318;&#39029;</a>` + content.novel.chapters.map(item => `
     <a class="chapter-link ${item.number === chapter.number ? 'active' : ''}" href="novel.html?chapter=${item.number}">
       ${String(item.number).padStart(2, '0')} · ${item.title}
     </a>`).join('');
@@ -160,7 +161,6 @@ function renderNovel() {
       </div>
     </div>`;
 
-  initNovelIllustrationGallery();
 }
 
 const novelIllustrations = [
@@ -168,43 +168,44 @@ const novelIllustrations = [
   'assets/novel-illustration-2.png',
   'assets/novel-illustration-3.png'
 ];
+let novelIllustrationTimer;
 
-function initNovelIllustrationGallery() {
-  if (!document.body.classList.contains('novel-reading')) return;
+function initNovelIllustrationGallery(novelCard) {
+  if (!novelCard) return;
 
-  document.querySelector('[data-novel-illustration-gallery]')?.remove();
-  const gallery = document.createElement('aside');
-  gallery.className = 'illustration-gallery';
+  novelCard.querySelector('[data-novel-illustration-gallery]')?.remove();
+  const gallery = document.createElement('button');
+  gallery.type = 'button';
+  gallery.className = 'illustration-next';
   gallery.dataset.novelIllustrationGallery = '';
-  gallery.setAttribute('aria-label', '\u63d2\u753b\u80cc\u666f');
+  gallery.setAttribute('aria-label', '\u5207\u6362\u5230\u4e0b\u4e00\u5f20\u63d2\u753b');
   gallery.innerHTML = `
-    <p class="illustration-gallery-title">\u63d2\u753b\u80cc\u666f</p>
-    <div class="illustration-options">
-      ${novelIllustrations.map((src, index) => `
-        <button class="illustration-option" type="button" data-illustration-index="${index}" aria-label="\u5207\u6362\u5230\u7b2c ${index + 1} \u5f20\u63d2\u753b">
-          <img src="${src}" alt="" loading="lazy">
-          <span>${String(index + 1).padStart(2, '0')}</span>
-        </button>`).join('')}
-    </div>`;
-  document.body.append(gallery);
+    <img src="" alt="" loading="lazy">
+    <span>\u4e0b\u4e00\u5f20 &#8594;</span>`;
+  novelCard.append(gallery);
 
   const savedIndex = Number(localStorage.getItem('novel-illustration-index'));
   const initialIndex = Number.isInteger(savedIndex) && novelIllustrations[savedIndex] ? savedIndex : 0;
+  let currentIndex = initialIndex;
   const applyIllustration = index => {
-    document.documentElement.style.setProperty('--novel-illustration', `url("${novelIllustrations[index]}")`);
+    currentIndex = index;
+    novelCard.style.backgroundImage = `url("${novelIllustrations[index]}")`;
     localStorage.setItem('novel-illustration-index', String(index));
-    gallery.querySelectorAll('[data-illustration-index]').forEach(button => {
-      const active = Number(button.dataset.illustrationIndex) === index;
-      button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
+    gallery.querySelector('img').src = novelIllustrations[(index + 1) % novelIllustrations.length];
   };
 
-  gallery.addEventListener('click', event => {
-    const button = event.target.closest('[data-illustration-index]');
-    if (button) applyIllustration(Number(button.dataset.illustrationIndex));
+  const startAutoRotation = () => {
+    window.clearInterval(novelIllustrationTimer);
+    novelIllustrationTimer = window.setInterval(() => {
+      applyIllustration((currentIndex + 1) % novelIllustrations.length);
+    }, 7000);
+  };
+  gallery.addEventListener('click', () => {
+    applyIllustration((currentIndex + 1) % novelIllustrations.length);
+    startAutoRotation();
   });
   applyIllustration(initialIndex);
+  startAutoRotation();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
