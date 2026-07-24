@@ -70,7 +70,6 @@ function essayCard(essay, index) {
           <div class="essay-meta"><span>${formatDate(essay.date)}</span><span>${essay.readingTime}</span></div>
           <h3>${essay.title}</h3>
           <p>${essay.excerpt}</p>
-          <div class="tags">${essay.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
         </div>
       </a>
     </article>`;
@@ -120,7 +119,7 @@ function renderArticle() {
       <div class="eyebrow">Essay</div>
       <h1 class="reader-title">${essay.title}</h1>
       <p class="reader-subtitle">${essay.excerpt}</p>
-      <div class="reader-meta"><span>${formatDate(essay.date)}</span><span>${essay.readingTime}</span><span>${essay.tags.join(' · ')}</span></div>
+      <div class="reader-meta"><span>${formatDate(essay.date)}</span><span>${essay.readingTime}</span></div>
     </header>
     <article class="reader-content">${renderBlocks(essay.content)}</article>
     <div class="reader-actions">
