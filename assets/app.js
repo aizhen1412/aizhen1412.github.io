@@ -55,10 +55,11 @@ function renderBlocks(blocks) {
 }
 
 function essayCard(essay, index) {
-  const coverStyle = essay.cover.startsWith('assets/')
-    ? `background-image:url('${essay.cover}');background-size:cover;background-position:center;`
-    : `background:${essay.cover}`;
-  const coverClass = essay.cover.startsWith('assets/') ? ' image-cover' : '';
+  const cover = essay.cover || content.novel.cover;
+  const coverStyle = cover.startsWith('assets/')
+    ? `background-image:url('${cover}');background-size:cover;background-position:center;`
+    : `background:${cover}`;
+  const coverClass = cover.startsWith('assets/') ? ' image-cover' : '';
   return `
     <article class="essay-card">
       <a href="article.html?id=${essay.id}" aria-label="阅读《${essay.title}》">
